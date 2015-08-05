@@ -972,16 +972,14 @@ public class Segmentation extends AbstractParser {
             writer.write(fulltext + "\n");
             writer.close();
 
-            // ----------------------8<----------------------------------
-            // rloth: also write the raw text as seen before segmentation
-            // > F.training.segmentation.rawtxt
-            StringBuffer rawtxt = new StringBuffer();
-            for(String txtline : tokenizations) {
-                rawtxt.append(txtline);
-            }
-            String outPathRawtext = pathFullText + "/" + PDFFileName.replace(".pdf", ".training.segmentation.rawtxt");
-            FileUtils.writeStringToFile(new File(outPathRawtext), rawtxt.toString(), "UTF-8");
-            // ----------------------8<----------------------------------
+			// also write the raw text as seen before segmentation
+			StringBuffer rawtxt = new StringBuffer();
+			for(String txtline : tokenizations) {
+				rawtxt.append(txtline);
+			}
+			String outPathRawtext = pathFullText + "/" + 
+				PDFFileName.replace(".pdf", ".training.segmentation.rawtxt");
+			FileUtils.writeStringToFile(new File(outPathRawtext), rawtxt.toString(), "UTF-8");
 
             if ((fulltext != null) && (fulltext.length() > 0)) {
                 String rese = label(fulltext);

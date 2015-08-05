@@ -277,21 +277,20 @@ public class Engine implements Closeable {
                     Writer writer = new OutputStreamWriter(new FileOutputStream(new File(outPath), false), "UTF-8");
                     writer.write(tei + "\n");
                     writer.close();
-					
+
 					// generate also the raw vector file with the features
 					outPath = pathTEI + "/" + inputFile.getName().replace(".pdf", ".training.referenceSegmenter");
                     writer = new OutputStreamWriter(new FileOutputStream(new File(outPath), false), "UTF-8");
                     writer.write(raw + "\n");
                     writer.close();
 
-                    // ----------------------8<-----------------------------
-                    // rloth: also write the raw text as it is before refseg
-                    // > F.training.referenceSegmenter.rawtxt
-                    String outPathRawtext = pathTEI + "/" + inputFile.getName().replace(".pdf", ".training.referenceSegmenter.rawtxt");
-                    Writer strWriter = new OutputStreamWriter(new FileOutputStream(new File(outPathRawtext), false), "UTF-8");
-                    strWriter.write(referencesStr + "\n");
-                    strWriter.close();
-                    // ----------------------8<----------------------------- 
+					// also write the raw text as it is before reference segmentation
+					String outPathRawtext = pathTEI + "/" + inputFile.getName()
+						.replace(".pdf", ".training.referenceSegmenter.rawtxt");
+					Writer strWriter = new OutputStreamWriter(
+						new FileOutputStream(new File(outPathRawtext), false), "UTF-8");
+					strWriter.write(referencesStr + "\n");
+					strWriter.close();
                 }
 			}
 		}
