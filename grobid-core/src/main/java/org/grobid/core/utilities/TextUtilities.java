@@ -652,7 +652,6 @@ public class TextUtilities {
                         char c2 = string.charAt(i + 1);
                         char c3 = string.charAt(i + 2);
                         char c4 = string.charAt(i + 3);
-                        char c5 = string.charAt(i + 4);
                         if (c2 == 'a') {
                             if (c3 == 'm') {
                                 if (c4 == 'p') {
