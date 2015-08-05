@@ -139,6 +139,13 @@ public interface GrobidPathes {
 	public static final String PATH_SHA1= "sha1";
 	
 	/**
+	 * rloth: new route /modelProperties to broadcast ISTEX model infos
+	 *        returns any config key:val where key startsWith("models.")
+	 *        (XML values, no password asked)
+	 */
+	public static final String PATH_MODEL_PROPS= "modelsProperties";
+	
+	/**
 	 * path extension for getting all properties.
 	 */
 	public static final String PATH_ALL_PROPS= "allProperties";

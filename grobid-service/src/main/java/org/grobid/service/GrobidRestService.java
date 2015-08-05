@@ -562,6 +562,19 @@ public class GrobidRestService implements GrobidPathes {
 	}
 
 	/**
+	 * @see org.grobid.service.process.GrobidRestProcessAdmin#getModelPropertiesValues(String)
+	 * 
+	 * rloth: broadcasts any properties that starts with "models."
+	 *        (ISTEX mod)
+	 */
+	@Path(PATH_MODEL_PROPS)
+	@Produces(MediaType.TEXT_PLAIN)
+	@GET
+	public Response getModelsPropertiesValuesGet() {
+		return GrobidRestProcessAdmin.getModelsPropertiesValues();
+	}
+	
+	/**
 	 * @see org.grobid.service.process.GrobidRestProcessAdmin#getAllPropertiesValues(String)
 	 */
 	@Path(PATH_ALL_PROPS)

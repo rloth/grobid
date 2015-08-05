@@ -153,6 +153,31 @@ public class GrobidRestProcessAdmin {
 	}
 
 	/**
+	 * rloth: ISTEX mod (need to broadcast some "model's info")
+	 *     Return only "models properties"
+	 *                 (ie any config value starting with "models.")
+	 *    -> in xml format just like getAllPropertiesValues()
+	 *    -> but without a password being asked
+	 * 
+	 * @return Response containing the properties.
+	 */
+	public static Response getModelsPropertiesValues() {
+		LOGGER.debug(">> getModelsPropertiesValues");
+		Response response = null;
+		String retVal = null;
+		try {
+			retVal = GrobidPropertiesUtil.getModelsPropertiesListXml();
+			response = Response.status(Status.OK).entity(retVal)
+						.type(MediaType.TEXT_PLAIN).build();
+		} catch (Exception exp) {
+			LOGGER.error("An unexpected exception occurs. ", exp);
+			response = Response.status(Status.INTERNAL_SERVER_ERROR).build();
+		}
+		LOGGER.debug("<< getModelsPropertiesValues");
+		return response;
+	}
+
+	/**
 	 * Dynamically update the value of the property given in XML input file.
 	 * Also update the property file.
 	 * 

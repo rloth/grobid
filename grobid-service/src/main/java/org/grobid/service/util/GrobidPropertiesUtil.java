@@ -54,4 +54,23 @@ public class GrobidPropertiesUtil {
 		return gbdProperties.toString();
 	}
 
+	/**
+	 * rloth: ISTEX mod
+	 * Build an xml representation of each model's grobid properties.
+	 * Selects any config starting with "models." in grobid.properties
+	 * 
+	 * @return String
+	 */
+	public static String getModelsPropertiesListXml() {
+		StringBuilder gbdProperties = new StringBuilder();
+		gbdProperties.append(XmlUtils.startTag("modelconfig"));
+		for (GrobidProperty currProp : getAllPropertiesList()) {
+			if (currProp.getKey().startsWith("models.")) {
+				gbdProperties.append(currProp.toString());
+			}
+		}
+		gbdProperties.append(XmlUtils.endTag("modelconfig"));
+		return gbdProperties.toString();
+	}
+
 }
